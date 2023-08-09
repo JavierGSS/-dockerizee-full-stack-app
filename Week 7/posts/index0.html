@@ -1,0 +1,71 @@
+<html>
+<head>
+  <title>A random list</title>
+</head>
+
+<body>
+  <h1 id="header1">A random list for study</h1>
+
+<div id="container">
+  <!-- populated by JS-->
+</div>
+
+<div id="container2">
+  <!-- populated by JS-->
+</div>
+
+
+
+
+<script src="./posts.js"></script>
+<script> 
+
+    let persons = [
+      {age: 26},
+      {age: 30},
+      {age: 14},
+      {age: 22}
+    ];
+
+    function renderPosts(posts, container) {
+    const len = posts.length;
+    let html = '';    
+    for (let i = 0; i < len; i++) {
+      html += '<li class="post">' +
+        '<h2>' + posts[i].title + '</h2>' +
+        '<h3>' + posts[i].content + '</h3>';
+    }
+    
+    container.innerHTML = '<ul id="posts1">' + html + '</ul>';
+  }
+
+  function renderPosts2(posts, container) {
+    const len = posts.length;
+    let html = '';    
+    for (let i = 0; i < len; i++) {
+      html += '<li class="post">' +
+        '<h2>' + posts[i].age + '</h2>';
+    }
+    container.innerHTML = '<ul id="posts2">' + html + '</ul>';
+  }
+
+
+  renderPosts(posts, document.getElementById("container"));
+  renderPosts2(persons, document.getElementById("container2"));
+
+  let item = document.createElement('li');
+  let node = document.createTextNode('New item');
+  item.appendChild(node);
+  document.getElementById('posts1').appendChild(item);
+
+  let item2 = document.createElement('li');
+  let node2 = document.createTextNode('New number');
+  item2.appendChild(node2);
+  document.getElementById('posts2').appendChild(item2);
+
+
+  
+
+</script>
+</body>
+</html>

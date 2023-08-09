@@ -1,0 +1,52 @@
+<div id="ball" style="
+  z-index:5;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:green"></div>
+
+<script>
+
+var velocity = 2;
+var position = 0;
+var ball1 = document.getElementById('ball');
+var counter = 1;
+
+
+function move1() { 
+  
+  if (counter < 140000) {
+  position = position + velocity;
+  ball1.style.left = position + 'px';
+  counter = position + counter;
+  }
+
+  else {
+    move2();
+  }
+  
+}
+
+function move2() {
+  
+  if (0 < counter && ball.style.left != '0px') {
+    
+      position = position - velocity;
+      ball1.style.left = position +'px';
+      counter = counter + position;
+    }
+  
+  else {
+    counter = 0;
+  }
+
+}
+
+
+var timer1 = setInterval(move1, 0.5);
+
+
+</script>

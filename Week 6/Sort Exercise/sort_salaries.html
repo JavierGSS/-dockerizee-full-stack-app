@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<script src="https://www.google.com/jsapi"></script>
+<script src="chart.js"></script>
+<script src="salaries.js"></script>
+
+<div id="chart_div" style="width: 1280px; height: 1280px;"></div>
+
+<script>
+const salaries = chicago.data;
+
+const generatePoints = function(){
+
+	const points  = [];
+	salaries.forEach(function(item){
+		points.push({
+			job    : item[9],
+			salary : Number(item[11])
+		});					
+	});
+
+	// order by salary
+	points.sort(compare);
+
+	return points;
+};
+
+function compare(a, b) {
+	if (Number(a.salary) < Number(b.salary)) {return -1;};
+	if (Number(a.salary) > Number(b.salary)) {return 1;};
+	if (Number(a.salary) === Number(b.salary)) {return 0;};
+}
+
+
+let salarioTombos = [];
+var filter = (item) => {
+    const cops = "POLICE OFFICER";
+    if (item[9] === cops) {
+        salarioTombos.push([item[9], item[11]]);
+    }
+}
+
+let salarioBomberos = [];
+
+var filter2 = (item) => {
+    const cops = "FIREFIGHTER";
+    if (item[9] === cops) {
+        salarioBomberos.push([item[9], item[11]]);
+    }
+}
+
+salaries.forEach(filter);
+salaries.forEach(filter2);
+console.log(salarioTombos);
+console.log(salarioBomberos);
+
+var salaryPerCapita = function(array) {
+    let sum = 0;
+    array.forEach((item) => {
+        sum += Number(item[1]);
+    });
+    return sum / array.length;
+}
+
+console.log(salaryPerCapita(salarioTombos));
+console.log(salaryPerCapita(salarioBomberos));
+
+var avgSalary = function(array) {
+	let sum = 0;
+	array.forEach((item) => {
+		sum += Number(item[11]);
+		return sum;
+	})
+	let average = sum / array.length;
+	return average;
+}
+
+console.log(avgSalary(salaries));
+
+window.onload = function run(){
+	const points = generatePoints();
+	const dataset = generateDataset(points);	
+	drawChart(dataset);
+};
+
+</script>
+
+</html>

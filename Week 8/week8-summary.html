@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Styles and Bootstrap</title>
+    <link rel="stylesheet" href="../../assets/style.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/proxima-nova-web-fonts-master/fonts/fonts.css" />
+</head>
+
+<body>
+    <div class="container">
+        <img src="mitxprologo.jpg" alt="MIT XPro Logo" width="250px" height="80px">
+        <h1 class="header-text">Styles and Bootstrap</h1>
+    </div>
+    <p>Please review the concepts discussed week.</p>
+
+
+<h2 id="how-html-css-and-javascript-work-together">How HTML, CSS, and JavaScript work together</h2>
+<p>Frontend code consists of three main parts. </p>
+<ul>
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript. </li>
+</ul>
+<p>If you compare parts to a human body, HTML would be the skeleton that holds the body up, CSS would be the
+    body&#39;s outward appearance, and JavaScript would be the muscular system that lets the body move. </p>
+<p>HTML provides the basic components of a webpage, with individual pieces called <code>elements</code>,
+    declared using <code>tags</code> or <code>classes</code>. Here are some examples of HTML elements used for simple layout.
+</p>
+<pre><code class="lang-html">
+<span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>I'm a large header element.<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>I'm a slightly smaller header element.<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>I'm a paragraph element. You can write lots of text here. <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"specific-paragraph"</span>&gt;</span>I'm another paragraph.  I have a a specific class name.
+<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Click Me!<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"container&gt;
+  &lt;ul class="</span><span class="hljs-attr">grocery-list</span>"&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Milk<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Eggs<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Coffee<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<p>CSS styles the HTML elements to the specifications you give it. You can target HTML elements in CSS via <em>selectors</em>, which are
+    pre-declared HTML tags, class names, IDs, or any combination thereof. A grouping of a selector and CSS
+    properties applied on that selector is called a <em>rule declaration</em>. Here are some examples. </p>
+<pre><code class="lang-lang=css"><span class="hljs-selector-tag">h1</span> {
+  <span class="hljs-attribute">background</span>: orange;
+  <span class="hljs-attribute">color</span>: blue;
+}
+
+<span class="hljs-selector-tag">h2</span> {
+  <span class="hljs-attribute">background</span>: green;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid red;
+}
+
+<span class="hljs-selector-tag">p</span> {
+  <span class="hljs-attribute">font-family</span>: courier,arial,helvetica;
+}
+
+<span class="hljs-selector-class">.specific-paragraph</span> {
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"Times New Roman"</span>, Times, serif;
+  <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">5em</span>;
+}
+
+<span class="hljs-selector-class">.container</span> { 
+  <span class="hljs-attribute">background</span>: pink;
+  <span class="hljs-attribute">text-color</span>: white;
+}
+
+<span class="hljs-selector-class">.container</span>,
+<span class="hljs-selector-class">.grocery-list</span> {
+   <span class="hljs-attribute">list-style-type</span>: square;
+}
+</code></pre>
+<p>While there are <em>frameworks</em> built on top of these parts that allow you to interact with them faster, like
+    Bootstrap, SASS, and React, the basic functionality of each of the parts remains the same. </p>
+
+
+    <h2 id="keeping-files-separate">Keeping files separate</h2>
+    <p> Style sheets and JavaScript code eventually become too large to manage inside of your HTML document and, as such, need to
+      go into their own separate documents. You link those documents in different parts of your HTML. </p>
+    <p>CSS style sheets link via the <code>&lt;head&gt;</code> section of your HTML file. </p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>My Webpage<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">”stylesheet”</span> <span class="hljs-attr">href</span>=<span class="hljs-string">”styles.css”</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span> ... <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+    </code></pre>
+    <p>JavaScript files link at the end of your HTML document, right before the closing <code>&lt;/body&gt;</code> tag.</p>
+
+   <div class="highlight">
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>My Webpage<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span> 
+      <span class="hljs-comment">&lt;!--Code here--&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span> =<span class="hljs-string">”script.js”</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+    </code></pre>
+    </div>
+  
+    <p>To check if your files have been linked properly, you can:</p>
+    <ul>
+      <li>Change a color property in your CSS file, and,</li>
+      <li>Change a console command in your JavaScript file.</li>
+    </ul>
+    <p>If the files are linked properly, you should see the changes reflected when you re-load your webpage. </p>
+
+    <h2 id="properties">Properties</h2>
+    <p>The individual elements we use to style CSS are called <code>properties</code>. There are hundreds of properties,
+      such as color, font-size, border, background-color, and so forth, so don&#39;t expect to memorize them all. You can see a
+      list of common CSS properties <a
+        href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference">here</a>. </p>
+    <p>Here is an example of a container, styled using several properties, such as color, border, padding, and
+      others. </p>
+    <pre><code class="lang-css"><span class="hljs-selector-class">.container</span> { 
+          <span class="hljs-attribute">display</span>: grid;:
+          <span class="hljs-attribute">text-align</span>: center;
+          <span class="hljs-attribute">font-size</span>: <span class="hljs-number">7em</span>;
+          <span class="hljs-attribute">font-family</span>:<span class="hljs-string">'Lucida Sans'</span>, <span class="hljs-string">'Lucida Sans Regular'</span>, <span class="hljs-string">'Lucida Grande'</span>, <span class="hljs-string">'Lucida Sans Unicode'</span>, Geneva, Verdana, sans-serif;
+          <span class="hljs-attribute">-webkit-text-stroke</span>: <span class="hljs-number">5px</span> black;
+          <span class="hljs-attribute">color</span>: white;
+          <span class="hljs-attribute">padding</span>: <span class="hljs-number">5px</span>;
+          <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">linear-gradient</span>(to bottom right, red, yellow);
+          <span class="hljs-attribute">border</span>: <span class="hljs-number">10px</span> solid black;
+    }
+    </code></pre>
+
+      <div class="hello-world-image">
+    <img src="hello-world.png" width=40% height=90%>
+
+    </div>
+    <h2 id="grid">Grid</h2>
+    <p>Grid has risen to prominence as a way to overcome some of the limitations of basic CSS by providing an intelligent
+      way to lay out your HTML elements on the page quickly and with fewer headaches.</p>
+    <p>To style elements with grid, it is best to wrap the elements you want to style in a
+     wrapper, named something like &quot;container&quot; or &quot;content&quot; as a class. You can then style the elements using grid. Here is an example. </p>
+        <blockquote>
+          <p>First, you can identify the HTML elements that you want to style: </p>
+          <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">main</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"content"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>4<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>5<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>6<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>7<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>8<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>9<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>10<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>11<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>12<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+    </code></pre>
+          <p>Then, write some basic styling on the elements themselves, using color, etc:</p>
+        </blockquote>
+        <pre><code class="lang-css">      <span class="hljs-selector-tag">div</span> {
+          <span class="hljs-attribute">background</span>: cadetblue;
+          <span class="hljs-attribute">padding</span>: <span class="hljs-number">30px</span>;
+          <span class="hljs-attribute">text-align</span>: center;
+          <span class="hljs-attribute">font-size</span>: <span class="hljs-number">40px</span>;
+          <span class="hljs-attribute">color</span>: darkblue; 
+        }
+        <span class="hljs-selector-tag">div</span><span class="hljs-selector-pseudo">:nth-of-type(odd)</span> {
+          <span class="hljs-attribute">background</span>: burlywood;
+        }
+    </code></pre>
+        <blockquote>
+          <p>Then, you can quickly and easily lay them out in a custom grid, using CSS grid on the <code>.content</code> class.
+          </p>
+        </blockquote>
+        <pre><code class="lang-css">   <span class="hljs-selector-class">.content</span> {
+          <span class="hljs-attribute">display</span>: grid;
+          <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-number">1</span>fr <span class="hljs-number">2</span>fr <span class="hljs-number">3</span>fr <span class="hljs-number">4</span>fr;
+          <span class="hljs-attribute">grid-template-rows</span>: <span class="hljs-number">3</span>fr <span class="hljs-number">2</span>fr <span class="hljs-number">1</span>fr;
+          <span class="hljs-attribute">gap</span>: <span class="hljs-number">5px</span>;
+          <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid darkblue;
+        }
+    </code></pre>
+        <p>The final product looks like this. </p>
+
+  <div class="grid-image">
+  <img src="grid-example.png" width=40%>
+  </div>
+    </div>
+<h2 id="bootstrap">Bootstrap</h2>
+<p>Bootstrap is an HTML, CSS and JavaScript framework that is incredibly useful for styling your HTML with
+  out-of-the-box UI elements and JavaScript-powered widgets. </p>
+<p>It&#39;s great to use it when you are on a tight deadline. It is also great to use when you want to use some tried-and-true styles. However, Bootstrap is not
+  good to use to learn CSS, as it can be too complex and overwhelming. </p>
+<p>To learn more about Bootstrap and get to started using some external Bootstrap files, check out the website at <a
+    href="https://getbootstrap.com/">https://getbootstrap.com/</a></p>
+<h2 id="webfonts">Webfonts</h2>
+<p>Up until now, you&#39;ve been explicitly declaring a font-family to use in your CSS files like this:</p>
+<pre><code class="lang-css"><span class="hljs-selector-tag">p</span> {
+  <span class="hljs-attribute">font-family</span>: Helvetica, <span class="hljs-string">"Trebuchet MS"</span>, Verdana, sans-serif;
+}
+</code></pre>
+<p><em>Webfonts</em> allow you to externally reference whole libraries of fonts that download at the same time as your
+  CSS file loads onto the browser. This gives you an incredible number of options. However, not all fonts
+  are cross browser compatible, which means you may have to include different versions for different browsers. </p>
+<p>The syntax for using webfonts will look something like this at the top of your CSS file: </p>
+<pre><code class="lang-css">@<span class="hljs-keyword">font-face</span> {
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"myFont"</span>;
+  <span class="hljs-attribute">src</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"myFont.woff"</span>);
+}
+</code></pre>
+<p>And then, later in your CSS file, you can use the downloaded font anywhere you want. </p>
+<pre><code class="lang-css"><span class="hljs-selector-tag">html</span> {
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"myFont"</span>, <span class="hljs-string">"Bitstream Vera Serif"</span>, serif;
+}
+</code></pre>
+<p>A great open library to use with webfonts is Google&#39;s fonts library, at <a
+    href="https://fonts.google.com/">https://fonts.google.com/</a>.</p>
+
+    <p>Here are a couple of examples of webfonts being used on the same block of text. Notice the different ways you can
+      import the fonts in the <code>head</code> section of the HTML document. </p>
+    <h4 id="goldman-font-family">Goldman font family</h4>
+    <div class="font-example"><img src="goldman.png" alt="font-example"></div>
+    <pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Fonts<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        @<span class="hljs-keyword">import</span> url(<span class="hljs-string">'https://fonts.googleapis.com/css2?family=Goldman&amp;display=swap'</span>);
+        <span class="hljs-selector-tag">p</span> {
+          <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'Goldman'</span>, cursive;
+        }
+      </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Will you be having coffee before, during, or after you finish coding?<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+    </code></pre>
+    <h4 id="merriweather-font-family">Merriweather font family</h4>
+
+    <div class="font-example"><img src="merriweather.png" alt="font-example"></div>
+    <pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Fonts<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"preconnect"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://fonts.gstatic.com"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://fonts.googleapis.com/css2?family=Merriweather:wght@300&amp;display=swap"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        <span class="hljs-selector-tag">p</span> {
+          <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'Merriweather'</span>, serif;
+        }
+      </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Will you be having coffee before, during, or after you finish coding?<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+    </code></pre>
+    <h4 id="architects-daughter-font-family">Architects Daughter font family</h4>
+    <div class="font-example"><img src="architects-daughter.png" alt="font-example"></div>
+    <pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Fonts<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">      
+      @<span class="hljs-keyword">import</span> url(<span class="hljs-string">'https://fonts.googleapis.com/css2?family=Architects+Daughter&amp;display=swap'</span>);
+        <span class="hljs-selector-tag">p</span> {
+          <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'Architects Daughter'</span>, cursive;
+        }
+      </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Will you be having coffee before, during, or after you finish coding?<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+    </code></pre>
+
+
+</body>

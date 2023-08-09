@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+
+            
+
+        </style>
+
+
+    </head>
+
+<script>
+    
+    window.onload = function() {
+    document.body.style.backgroundColor = '#FEFBF7';
+    const tag = document.getElementById('tag1');
+    var time = 31;    
+    function getTime() {
+        time = time - 1;
+        tag.innerHTML = 'Goodbye, Alien! Your ship sails in ' + time + ' seconds.';
+    
+        if (time <= 20 && time > 10) {
+            document.body.style.backgroundColor = '#EC8E15';
+        }
+
+        if (time < 5) {
+            document.body.style.backgroundColor = '#F7391F';
+        }
+
+        if (time < 0) {
+            document.body.style.backgroundColor = '#FEFBF7';
+            time = 31;
+        }        
+
+    }        
+    setInterval(getTime, 1000);
+}
+</script>
+
+<body>
+    <main class= "content">
+        <div id='tag1'>Hello Earthling!</div>
+        <div>Have a nice trip.</div>Have a nice trip.
+    </main>
+</body>
+
+
+</html> 

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Adding styles</title>
+    <link rel="icon" type="image/jpg" href="/Users/babalu/Downloads/icons8-estrella-32.png">
+
+
+    <!-- don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+
+    <!-- target element -->
+    <div id="root"></div>
+
+    <!-- load react -->
+    <script src="https://unpkg.com/react/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js" crossorigin></script>
+  
+    <!-- load react component -->
+    <script defer type="text/babel">
+
+      function formatName(user) {
+        return user.firstName + ' ' + user.lastName;
+      }
+
+      const user = {
+        firstName: 'Peter',
+        lastName: 'Parker'
+      };
+
+      const style = {
+        fontFamily: 'Arial',
+        color: 'green'
+      };
+
+      // Here we build the element to be rendered; notice the use of formatName,
+      // and the definition of style as an object that we pass in the h1 tag as an attribute
+      const element = (
+        <h1 style={style}>
+          Hello, {formatName(user)}!
+        </h1>
+      );
+
+      ReactDOM.render(
+        element,
+        document.getElementById('root')
+      );
+
+    </script>
+
+
+  </body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
+        <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
+        <link rel = "stylesheet" href = "./estilos.css">
+        <title>Bitácora</title>
+    </head>
+
+    <body>
+
+        <h1><b>Semana 1</b></h1>
+        <img src = "./vertigo.jpg"
+        width = '400'
+        height = '500'
+        border: 0px
+        alt = "eye"
+        class = center
+        />
+
+        <div id="contenido-del-blog">
+
+            <h2>Aprendizajes</h2>
+            <p>
+                Esta primera semana de clases estuvo dedicada a la consolidación de conceptos básicos de computación 
+                y de JS. Estuvo <em>densa</em>. Aprendí, por ejemplo, cuáles son las partes fundamentales de una computadora: 
+                un <em>CPU</em>, que se encarga de ejecutar las órdenes gira el usuarix; una <em>memoria</em>, que almacena 
+                instrucciones y datos; y finalmente los <em>dispositivos de input y output</em>, como el teclado o la 
+                pantalla, que nos permiten interactuar con los dos componentes anteriores.<br><br>
+
+                Pero esto era sólo el comienzo. Más adelante el Dr. Williams se encargó de enseñarnos la distinción 
+                entre el 'stack' y el 'heap', dos estructuras temporales de datos que son alojadas separadamente en la memoria 
+                y que interactúan entre sí a medida en que corre un programa. Una buena parte del material más interesante 
+                de esta semana estuvo consagrada a la exposición de esta interacción entre el heap y el stack, pero también fue 
+                muy útil aprender algunas generalidades alrededor del uso de las variables en JS. La cosa, en 
+                términos generales, va más o menos así.<br><br>
+
+                <h3>1. Variables</h3>
+                Las <em>variables</em> pueden ser definidas como los nombres que le damos 
+                a los datos que usamos para construir y ejecutar un programa. Hay diferentes <em>tipos</em> de datos; 
+                hay cadenas, números, booleanos, pero también hay arreglos, objetos, fechas, y algunos 
+                otros tipos más. Se denomina el <em>valor</em> de una variable a la cosa o dato nombrado por ella (un número, un arreglo, etc.), 
+                y decimos que hemos <em>definido</em> una variable cuando le hemos asociamos a esa variable algún valor. 
+                Para definir una variable en JS se utilizan ciertas palabras-clave, las palabras <strong>let</strong>, <strong>var</strong> 
+                y <strong>const</strong>. En el siguiente snippet se ilustra cómo se pueden definir tres variables 
+                diferentes, <strong>uno</strong>, <strong>persona</strong> y <strong>arreglo</strong>, y asignárseles tres tipos 
+                de datos diferentes (un número, un objeto y un arreglo, respectivamente):
+                
+                <pre>
+                    let uno = 1;
+
+                    var persona = {
+                        nombre: 'emilia',
+                        apellido: 'guzmán',
+                        edad: 35
+                    };
+
+                    const arreglo = [0, 'A', 2, [1]];
+                </pre>
+
+                Las variables tienen un <em>alcance</em>, que puede definirse como el fragmento del programa en el 
+                cual las variables existen o están definidas. Las variables introducidas con 
+                <strong>const</strong> y <strong>var</strong>, así como las que fungen como argumentos o parámetros 
+                de función, existen únicamente dentro de las funciones 
+                que las movilizan. Las variables definidas con <strong>let</strong> tienen un alcance <em>de bloque</em>, 
+                esto es, definido estrictamente por las llaves ({ }) en las que se insertan. Por último, hay 
+                variables <em>globales</em>, que existen dentro de todo el programa que las emplea y se definen 
+                por fuera de cualquier bloque definido por llaves. En el snippet que 
+                incluyo abajo se muestra una variable, <strong>global</strong>, cuyo alcance es global, y otra, 
+                <strong>local</strong>, cuyo alcance es de función:
+
+                <pre>
+                    var global = [0, 1, 2];
+
+                    function cuadrado(x) {
+                        let local = x * x;
+                        return local;
+                    }
+                </pre>
+
+                Cuando dos variables refieren a un mismo tipo de dato <em>primitivo</em> (<em>i.e.</em>, a números, 
+                cadenas, booleanos, undefined, null y symbol), sus valores son 
+                independientes. Por tanto, modificar el valor de una de ellas no altera el valor de la segunda. No sucede 
+                lo mismo cuando refieren a un tipo <em>de referencia</em>, como un arreglo o un objeto. 
+                En este caso, ambas variables refieren a lo mismo (y no a diferentes <em>copias</em> de lo mismo), 
+                y por consiguiente modificar el valor de 
+                alguna de ellas implica una modificar el valor de la segunda.<br><br>
+
+
+                <h3>2. Heap y stack</h3>
+
+                El stack es una estructura <em>estática</em> de datos, mientras que el heap es una estructura <em>dinámica</em> de datos. 
+                En el stack existe por omisión un <em>marco global</em> que aloja a las variables globales, esto es, a los nombres asociados  
+                a la info que deseamos tener a la mano a través de todo el programa. Ahora bien, 
+                <em>dónde</em> se aloja esta info depende del tipo de dato asociado a ella. 
+                Si se asocia a un número, a una cadena o a un Booleano, entonces su valor se guarda directamente 
+                en el stack. Si el tipo de 
+                dato asociado es una función, por ejemplo, o un arreglo, entonces su valor no se copia 
+                en el stack, sino en el heap, 
+                y la relación entre variable (que se registra en el stack) y su valor (contenido en el heap) se conoce 
+                como "referencia". Los arreglos y los objetos (entre los cuales se cuentan las funciones), 
+                pues, no viven, como los números o las cadenas, en el stack, sino que viven 
+                en el heap, y existen solamente en tanto haya algo en el stack (una variable) que haga referencia a ellos. <br><br>
+
+                A medida en que el programa corre y se van ejecutando funciones, se van creando nuevos marcos en 
+                el stack asociados a la aplicación de estas funciones a argumentos concretos. Estos marcos sólo existen 
+                durante la ejecución de la función. En una imagen, el stack es el escenario donde se desenvuelve toda la acción; 
+                el heap, en contraparte, es donde se almacenan todos los elementos que tienen un papel en la obra.<br><br>
+
+                <button onclick="home()"><b>Home</b></button>
+                <button onclick="week0()"><b>Semana 0</b></button>
+                <button onclick="home()"><b>Semana 2</b></button><br><br>
+
+                <img src = "russell.png"
+                id = "russell"
+                width = "100"
+                height = "100"
+                alt = "russell"
+                class = "heads"                
+                />
+            </p>
+
+            <script src="./scripts2.js"></script>
+
+
+
+
+
+
+
+
+    </div>
+    </body>
+
+
+
+
+</html>

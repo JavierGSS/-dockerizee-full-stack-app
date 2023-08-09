@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<head>
+  <title>Pure</title>
+</head>
+<body>
+  <select id="year">
+    <option>Freshman</option>
+    <option>Sophomore</option>
+    <option>Junior</option>
+    <option>Senior</option>    
+  </select>
+  <div>Name</div>
+  <input id="name" type="text">
+  <div>E-mail</div>
+  <input id="email" type="text">
+  <div>Password</div>
+  <input id="password" type="text"> 
+
+  <!-- Notice the difference in embedding and type: -->
+  <div><input id="checkbox" type="checkbox"> Remember me</div>
+
+  <!-- We create a button for submission of data: -->
+  <button onclick="handle()">Submit</button>
+
+  <div style="height: 30px"></div>
+
+  <div>Program</div>
+  <input id="program" type="text">
+  <div>Age</div>
+  <input id="age" type="number">
+  <div>ID</div>
+  <input id="id" type="number">
+  <div style="height: 5px"></div>
+  <button onclick="handle2()">Submit 2</button>
+
+  <div><input id="contact" type="checkbox">Opt out for future e-mails</div> 
+
+  <div>Size</div>
+  <select id="size">
+    <option>small</option>
+    <option>medium</option>
+    <option>large</option>
+  </select>
+
+  <!-- Here we include the function onClick: -->
+  <script>
+    function handle(){
+      console.log(document.getElementById('year').value);
+      console.log(document.getElementById('name').value);
+      console.log(document.getElementById('email').value);
+      console.log(document.getElementById('password').value);
+      console.log(document.getElementById('checkbox').checked);      
+    }
+
+    function handle2(){
+      console.log(document.getElementById('program').value);
+      console.log(document.getElementById('age').value);
+      console.log(document.getElementById('id').value);
+      console.log(document.getElementById('contact').checked);      
+    }
+  </script>
+</body>
+</html>

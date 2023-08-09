@@ -1,0 +1,224 @@
+<div id="ball" style="
+    z-index:5;
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:green"></div>
+
+<div id="ball_A" style="
+    z-index:4;
+    position:absolute;
+    left:0px;
+    top:70px;
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:rgb(81, 244, 81)"></div>
+
+<div id="ball_B" style="
+    z-index:3;
+    position:absolute;
+    left:0px;
+    top:130px;
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:rgb(242, 37, 218)"></div>
+
+<script>
+
+var ball = document.getElementById('ball');
+var velocityX = 7;
+var velocityY = 3;
+var positionX = 0;
+var positionY = 0;
+
+var moveRight = true;
+var moveDown = true;
+
+function move1() { 
+  
+  if (moveRight) {
+      positionX = positionX + velocityX;
+      ball.style.left = positionX + 'px';
+  
+      if (positionX >= 750) {
+          moveRight = false;
+          ball.style.background = 'blue';
+          velocityX = 2;     
+      }
+  }
+
+  else {
+      positionX = positionX - velocityX;
+      ball.style.left = positionX + 'px';
+      
+      if (positionX <= 0) {
+          moveRight = true;
+          ball.style.background = 'pink';
+      }
+  }
+}
+
+function move2() { 
+  
+  if (moveDown) {
+      positionY = positionY + velocityY;
+      ball.style.top = positionY + 'px';
+  
+      if (positionY >= 365) {
+          moveDown = false;
+          ball.style.background = 'black';
+          velocityY = 7;
+      }
+  }
+
+  else {
+      positionY = positionY - velocityY;
+      ball.style.top = positionY + 'px';
+      
+      if (positionY <= 0) {
+          moveDown = true;
+          ball.style.background = 'green';     
+      }
+  }
+}
+
+setInterval(move1, 10);
+setInterval(move2, 10);
+
+
+
+var ball_A = document.getElementById('ball_A');
+var velocityX_A = 5;
+var velocityY_A = 7;
+var positionX_A = 0;
+var positionY_A = 0;
+var moveRight_A = true;
+var moveDown_A = true;
+
+function move1_A() { 
+  
+  if (moveRight_A) {
+      positionX_A = positionX_A + velocityX_A;
+      ball_A.style.left = positionX_A + 'px';
+  
+      if (positionX_A >= 750) {
+          moveRight_A = false;
+          ball_A.style.background = '#EBDEF0';
+          ball_A.style.width = 25;
+          ball_A.style.height = 25;
+          velocityX_A = 2;     
+      }
+  }
+
+  else {
+      positionX_A = positionX_A - velocityX_A;
+      ball_A.style.left = positionX_A + 'px';
+      
+      if (positionX_A <= 0) {
+          moveRight_A = true;
+          ball_A.style.background = 'cyan';
+      }
+  }
+}
+
+function move2_A() { 
+  
+  if (moveDown_A) {
+      positionY_A = positionY_A + velocityY_A;
+      ball_A.style.top = positionY_A + 'px';
+  
+      if (positionY_A >= 365) {
+          moveDown_A = false;
+          ball_A.style.background = 'peru';
+          velocityY_A = 3;
+          ball_A.style.width = 50;
+          ball_A.style.height = 50;
+      }
+  }
+
+  else {
+      positionY_A = positionY_A - velocityY_A;
+      ball_A.style.top = positionY_A + 'px';
+      
+      if (positionY_A <= 0) {
+          moveDown_A = true;
+          ball_A.style.background = '#EC7063';     
+      }
+  }
+}
+
+
+setInterval(move1_A, 10);
+setInterval(move2_A, 10);
+
+
+
+var ball_B = document.getElementById('ball_B');
+var velocityX_B = 10;
+var velocityY_B= 5;
+var positionX_B = 0;
+var positionY_B = 0;
+
+var moveRight_B = true;
+var moveDown_B = true;
+
+function move1_B() { 
+  
+  if (moveRight_B) {
+      positionX_B = positionX_B + velocityX_B;
+      ball_B.style.left = positionX_B + 'px';
+  
+      if (positionX_B >= 750) {
+          moveRight_B = false;
+          ball_B.style.background = 'blue';
+          velocityX_B = 2;     
+      }
+  }
+
+  else {
+      positionX_B = positionX_B - velocityX_B;
+      ball_B.style.left = positionX_B + 'px';
+      
+      if (positionX_B <= 0) {
+          moveRight_B = true;
+          ball_B.style.background = 'pink';
+          velocityY_B = 8;
+      }
+  }
+}
+
+function move2_B() { 
+  
+  if (moveDown_B) {
+      positionY_B = positionY_B + velocityY_B;
+      ball_B.style.top = positionY_B + 'px';
+      velocityX_B = 2;
+  
+      if (positionY_B >= 365) {
+          moveDown_B = false;
+          ball_B.style.background = '#F1C40F';
+          velocityY_B = 15;
+      }
+  }
+
+  else {
+      positionY_B = positionY_B - velocityY_B;
+      ball_B.style.top = positionY_B + 'px';
+      
+      if (positionY_B <= 0) {
+          moveDown_B = true;
+          ball_B.style.background = '#34495E';     
+      }
+  }
+}
+
+setInterval(move1_B, 10);
+setInterval(move2_B, 10);
+
+
+</script>

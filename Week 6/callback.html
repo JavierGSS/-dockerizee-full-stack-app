@@ -1,0 +1,41 @@
+<html>
+    <button id="callback-btn">Click here</button>
+
+<script>
+const lista = [45, 23, 89, 65, 4, 32, 17, 98];
+
+function filtrado(list) {
+    let newList = [];
+    for (var i = 0; i < list.length; i++) {
+        for (var j = 0; j <= list[i]; j++) {
+            if (list[i] == (2 * j) + 1) {
+            newList.push(list[i]);            
+            }
+        }
+    }
+    return newList;
+}
+
+function filtrico(list, callback) {
+    return filtrado(list);
+
+}
+
+const filtered = filtrico(lista, filtrado)
+console.log(filtered);
+
+var red = function red() {
+    return 3.14;
+}
+
+const blue = function blue(h) {
+    let x = h();
+    return x;
+}
+
+var y = blue(red);
+console.log(y);
+
+
+</script>
+</html>

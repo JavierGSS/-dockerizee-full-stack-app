@@ -1,0 +1,122 @@
+<script>
+    // ES6 Warm Up 
+    let data = {
+        "fruits": [{
+                "id": 1,
+                "name": "Apple",
+                "description": "An apple is a sweet, edible fruit produced by an apple tree. Apple trees are cultivated worldwide and are the most widely grown species in the genus Malus.",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Red_Apple.jpg/265px-Red_Apple.jpg",
+                "price": 35
+            },
+            {
+                "id": 2,
+                "name": "Banana",
+                "description": "A banana is an edible fruit – botanically a berry – produced by several kinds of large herbaceous flowering plants in the genus Musa. In some countries, bananas used for cooking may be called plantains, distinguishing them from dessert banana",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Bananas_white_background_DS.jpg/320px-Bananas_white_background_DS.jpg",
+                "price": 12
+            },
+            {
+                "id": 3,
+                "name": "Grapes",
+                "description": "A small bunched fruit used to make wine",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Table_grapes_on_white.jpg/320px-Table_grapes_on_white.jpg",
+                "weight": 0.1,
+                "price": 45
+            },
+            {
+                "id": 4,
+                "name": "Pineapple",
+                "description": "a large fruit that goes well with ice cream",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Pineapple_and_cross_section.jpg/286px-Pineapple_and_cross_section.jpg",
+                "price": 200
+            },
+            {
+                "id": 5,
+                "name": "Tomato",
+                "description": "The tomato is the edible, often red, berry of the plant Solanum lycopersicum, commonly known as a tomato plant. The species originated in western South America and Central America.",
+                "image": "https://www.kampexport.com/sites/kampexport.com/files/images/legume/image/tomates_256_1.jpg",
+                "price": 150
+            },
+            {
+                "id": 6,
+                "name": "Cherry",
+                "description": "A cherry is the fruit of many plants of the genus Prunus, and is a fleshy drupe. Commercial cherries are obtained from cultivars of several species, such as the sweet Prunus avium and the sour Prunus cerasus.",
+                "image": "https://cdn.shopify.com/s/files/1/0610/2881/products/cherries.jpg?v=1446676415",
+                "price": 120
+            }
+        ]
+    }
+
+            myFruit = {
+                "id": 0,
+                "name": "Watermelon",
+                "description": "A sweet, edible, crispy, water-packed summer fruit.",
+                "image": "https://hips.hearstapps.com/hmg-prod/images/fresh-ripe-watermelon-slices-on-wooden-table-royalty-free-image-1684966820.jpg",
+                "price": 43
+            }
+    
+    data.fruits = [myFruit, ...data.fruits];
+
+    // Write a function to calculate how much I will pay at checkout
+    cart = [0, 3, 4, 5, 3];
+
+    // The following is an abbreviation:
+    data1 = data.fruits;
+
+    // const getCostOf = id => data.fruits[id].price;
+    // Another way to define getCostOf:
+    const getCostOf = id => (data1.filter(item => item.id == id))[0].price;
+
+    /*const getTotal = cart => {
+        let total = 0;
+        for (let i = 0; i < cart.length; i++) {
+            total += getCostOf(cart[i]);
+        }
+        return total;
+    }*/
+
+    // Another way to define getTotal is the following:
+    const getTotal = cart => {
+        let total = 0;
+        cart.map(item => total += getCostOf(item));
+        return total;
+    }
+
+
+            // write a function to fill the shopping cart with random fruits
+            // up to my limit of 1000
+            // write out the actual cost of the food in the cart eg 980
+            const getRandom = (scale) => (Math.floor(Math.random() * scale));
+                /*const fillCart = (cart = []) => {
+
+                    let total = 0;
+                    for (let i = 0; i < 1000; i = total) {
+                        cart.push(getRandom(7));
+                        total = getTotal(cart);                    
+                    }
+
+                    if (total > 1000) {
+                        cart.pop();
+                        total = getTotal(cart);
+                    }
+
+                    return total;
+                }*/
+
+            // Another way to define fillCart is the following:
+
+            const fillCart = (cart = []) => { //we set up a default value in case we forget to pass an argument to fillCart
+                let total = 0;
+                while (true) {
+                    let nextItem = getRandom(7);
+                    if ((total + getCostOf(nextItem)) < 1000) {
+                        cart.push(nextItem);
+                        total += getCostOf(nextItem);
+                    } else return total;
+                }
+            }
+
+            cart = [];
+            fillCart(cart);
+            getTotal(cart);
+</script>

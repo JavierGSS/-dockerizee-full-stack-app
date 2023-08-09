@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Embedding expressions</title>
+    <link rel="icon" type="image/jpg" href="/Users/babalu/Downloads/icons8-estrella-32.png">
+  </head>
+
+    <!-- don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+
+    <!-- element used by react, target div-->
+    <div id="root"></div>
+
+    <!-- load react -->
+    <script src="https://unpkg.com/react/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js" crossorigin></script>
+  
+    <!-- Load our React component. -->
+    <script defer type="text/babel">
+
+      let user = {
+        firstName: 'Pedro',
+        lastName: 'Navajas',
+        age: 35
+      };
+
+      let style = {
+        color: 'blue',
+        fontFamily: 'Arial'
+      }
+
+      const element = (
+        <h1>
+          Hello, {user.firstName} {user.lastName}! <br/>
+          <p style={style}>You are {user.age} years old.</p>
+        </h1>);
+
+
+      ReactDOM.render(
+        element,
+        document.getElementById('root')
+      );
+
+    </script>
+
+
+  </body>
+</html>

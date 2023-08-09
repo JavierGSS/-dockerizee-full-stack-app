@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Bus stations</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+<script src="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css" rel="stylesheet" />
+<style>
+  body { margin: 0; padding: 0; }
+  #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+  .map-overlay {
+    position: absolute;
+    left: 0;
+    padding: 10px;
+  }
+</style>
+</head>
+
+<body>
+
+<div id="map"></div>
+<div class="map-overlay top">
+  <button onclick="move()"
+    style="font-size: 2em; color: rgb(13, 76, 140);"
+  >
+    Bus stations between MIT and Harvard
+  </button>
+</div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiYmFiYWxhbyIsImEiOiJjbGlzajE4M3Iwb3hzM2VvMWxkMGM2M28xIn0.33Lyj_l4hDBMiHg4SA08tQ';
+
+var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/satellite-streets-v11',
+      center: [-71.092761, 42.365554],
+      zoom: 13
+  });
+
+  var marker = new mapboxgl.Marker({
+    color: '#2BE5A6'
+  })
+    .setLngLat([-71.093729, 42.359244])
+    .addTo(map);
+
+const busStops = [
+  [-71.093729, 42.359244],
+  [-71.094915, 42.360175],
+  [-71.095800, 42.360698],
+  [-71.099558, 42.362953],
+  [-71.103476, 42.365248],
+  [-71.106067, 42.366806],
+  [-71.108717, 42.368355],
+  [-71.110799, 42.369192],
+  [-71.113095, 42.370218],
+  [-71.115476, 42.372085],
+  [-71.117585, 42.373016],
+  [-71.118625, 42.374863]
+];
+
+const busStations = [
+  'Massachussets Ave.',
+  'Vassar St.',
+  'Albany St.',
+  'Sidney St.',
+  'Prospect St.',
+  'Bigelow St.',
+  'Hancock St.',
+  'Dana St.',
+  'Trowbridge St.',
+  'Quincy St.',
+  'Holyoke St.',
+  'Johnston Gate'
+]
+
+var counter = 0;
+function move() {
+  setTimeout(() => {
+    if (counter >= busStops.length) {
+      return;
+    } else {
+      var marcador = new mapboxgl.Marker({
+        color: '#2BE5A6'
+      })
+        .setLngLat(busStops[counter])
+        .addTo(map)
+        .setPopup(new mapboxgl.Popup().setHTML(busStations[counter]))
+      marker.setLngLat(busStops[counter]);
+      counter++;
+      move();
+      
+    };
+  }, 1000);
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+describe(‘test greet()’, () => {
+   
+   it(‘should return greeting’, () => {
+      const name = ‘Adela’;      
+      expect(greet(name)).toBe(‘Hello, ’ + name + ‘!’);
+   });
+
+   it(‘should return default greeting’, () => {
+      const name = null;
+      expect(greet(name)).toBe(‘Hello, there!’);
+   });
+
+   it(‘should return uppercase’, () => {
+      const name = ‘JOSEFINA;
+      expect(greet(name)).toBe(‘HELLO, ’ + name + ‘!’);
+   });
+
+   it(‘should greet two names’, () => {
+      const name = [‘Paula’, ‘Arenas’];
+      expect(greet(name)).toBe(‘Hello, ’ + name[0] + ‘,’ + name[1] + ‘.’);
+   });
+
+   it(‘should greet n names’, () => {
+      const name = [‘Bob’, ‘Karla’, ‘Laura’, ‘Gandalf’];
+      expect(greet(name)).toBe(‘Hello, ‘ + name[0] + ‘, ’ + name[1] + ‘, ‘ + name[2] + ‘, ’ + 
+      name[3]) + ‘.’);
+   });
+
+});

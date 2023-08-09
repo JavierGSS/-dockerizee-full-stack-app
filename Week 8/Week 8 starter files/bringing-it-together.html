@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grid</title>
+    <style>
+        .on{
+            background: orange;
+        }                
+        .content{
+            display: grid;
+            grid-template-columns: repeat(10,1fr);
+            grid-template-rows: repeat(10,1fr);
+            gap: 5px;
+        }
+        div{
+            padding: 10px;
+            text-align: center;
+            border-style: solid;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="createGrid()">CREATE GRID</button>    
+    <button onclick="move()" style="margin-bottom: 10px;">MOVE</button>
+
+    <main class="content" id="target"></main>
+
+    <script>
+        let position = 1;
+        let gridSize = 100;
+        let timer = null;
+
+        function createGrid() {
+            for (let i = 0; i < gridSize; i++) {
+                let num = i + 1;
+                let numString = num.toString();
+                let target = document.getElementById('target');
+                let div = document.createElement('div');
+                div.setAttribute('id', 'n' + numString);
+                let numNode = document.createTextNode(numString);
+                div.appendChild(numNode);
+                target.appendChild(div);
+            }
+        }
+
+        function toggle(position) {
+            if (position < 1) {
+                let position = 0;
+                return position;
+            } else {
+                const cell = document.getElementById('n' + position);
+                cell.classList.toggle("on");
+            }
+        }
+
+        function move() {
+            timer = setTimeout(() => {
+                if (position >= 1 && position <= gridSize) {
+                    toggle(position);
+                    position = position + 1;
+                    toggle(position - 2)
+                    move();
+                } else {
+                    clearTimeout(timer);
+                }
+            }, 100);
+
+        }
+    </script>
+</body>
+</html>
