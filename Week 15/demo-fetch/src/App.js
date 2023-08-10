@@ -17,6 +17,7 @@ function App() {
     setCharacters(datos.data.results);
   }
 
+  // Alternative way with fetch():
   /*const fetchCharacters = (url) => {
     fetch(url)
       .then(response => response.json())
