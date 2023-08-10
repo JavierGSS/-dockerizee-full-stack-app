@@ -1,44 +1,49 @@
-import "./App.css";
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import Navbar from "./components/Navbar";
+import Characters from './components/Characters';
+import Pagination from './components/Pagination';
+
 
 function App() {
-  const url = "https://huggingface.co/api/models";
-  const [data, setData] = useState([]);
-  console.log("DATA ", data);
+  const [characters, setCharacters] = useState([]);
+  const [info, setInfo] = useState({});
 
-  const fetchInfo = async () => {
-    const res = await axios.get(url);
-    return setData(res.data);
+  let initialUrl = "https://rickandmortyapi.com/api/character";
+
+  const fetchCharacters = (url) => {
+    fetch(url)
+      .then(response => response.json())
+      .then((data) => {
+        setCharacters(data.results);
+        setInfo(data.info);
+      })
+      .catch(error => console.log(error));
   };
 
-  console.log("DATA2 ", data);
+  const onPrevious = () => {
+    fetchCharacters(info.prev);
+  }
+
+  const onNext = () => {
+    fetchCharacters(info.next);
+  }
 
   useEffect(() => {
-    fetchInfo();
+    fetchCharacters(initialUrl);
   }, []);
 
   return (
-    <div className="App">
-      <h1 style={{ color: "black" }}>Fetch from source</h1>
-      <center>
-        {data.map((dataObj, index) => {
-          return (
-            <div
-              style={{
-                width: "15em",
-                backgroundColor: "#CD8FFD",
-                padding: 2,
-                borderRadius: 10,
-                marginBlock: 10,
-              }}
-            >
-              <a href={dataObj.id}>{dataObj.tags[8]}</a>
-            </div>
-          );
-        })}
-      </center>
-    </div>
+    <>
+      <Navbar brand="Rick and Morty App" />
+
+      <div className="container mt-3">
+        <Pagination prev={info.prev} next={info.next} onPrevious={onPrevious} onNext={onNext} />
+        <Characters characters={characters} />
+        <Pagination prev={info.prev} next={info.next} onPrevious={onPrevious} onNext={onNext} />
+      </div>
+    </>
+
+
   );
 }
 
