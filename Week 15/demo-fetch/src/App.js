@@ -13,7 +13,6 @@ function App() {
 
   const fetchCharacters = async (url) => {
     const datos = await axios(url);
-    console.log(datos);
     setInfo(datos.data.info);
     setCharacters(datos.data.results);
   }
