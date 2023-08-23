@@ -1,3 +1,5 @@
+import { checkForWinner } from "./superset.js";
+
 const Square = ({ id, selectSquare, newState }) => {
   const palet = ['red', 'blue', 'magenta'];
   const [color, setColor] = React.useState('pink');
@@ -8,9 +10,9 @@ const Square = ({ id, selectSquare, newState }) => {
 
   // useEffect will be called every time Square is re-rendered:
   React.useEffect(() => {
-      console.log(`Rendered: ${id}`);
-      return () => console.log(`Unmounting square ${id}`)
-    }
+    console.log(`Rendered: ${id}`);
+    return () => console.log(`Unmounting square ${id}`)
+  }
   )
 
   const getRandomColor = () => palet[Math.floor(Math.random() * 3)];
@@ -26,7 +28,7 @@ const Square = ({ id, selectSquare, newState }) => {
       setColor(col);
       e.target.style.backgroundColor = col;
 
-      let nextPlayer = newState({ id: id, color: col });
+      let nextPlayer = newState(id);
       setStatus(nextPlayer);
 
       alert(`I'm square ${id}; it's player ${nextPlayer}'s turn.`);
@@ -41,22 +43,28 @@ const Square = ({ id, selectSquare, newState }) => {
 }
 
 const Board = () => {
-  const [player, setPlayer] = React.useState(0);
+  const [player, setPlayer] = React.useState(1);
   const [square, setSquare] = React.useState('No square has been selected.');
   const [mounted, setMounted] = React.useState(true);
   const [random, setRandom] = React.useState(0);
-  const [state, setState] = React.useState([]);
+  // we initialize state variable with an array of 9 'null' elements:
+  const [state, setState] = React.useState(Array(9).fill('null'));
 
   let status = `Player: ${player}`;
-  alert(`${square}`);
+  console.log(`Adding state ${JSON.stringify(state)}`);
+  let winner = checkForWinner(state);
 
-  const newState = ({id: id, color: color}) => {
+  if (winner != null) {
+    status = `Player ${winner} wins!`;
+  }
+
+  const newState = (idOfSquare) => {
+    let thePlayer = player;
+    state[idOfSquare] = player; // *player* is present player (1 or 0); state array updates at index idOfSquare (0-8)
+    setState(state); // we update the state variable to include the preceding modification
     let nextplayer = (player + 1) % 2;
     setPlayer(nextplayer);
-    setState([...state, {id: id, color: color}]);
-    status = `Player ${nextplayer}`;
-    console.log(`Adding state ${JSON.stringify(state)}`);
-    return nextplayer;
+    return thePlayer; // returns the present player
   }
 
   const reRender = () => setRandom(Math.random());

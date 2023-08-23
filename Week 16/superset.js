@@ -12,9 +12,9 @@
   [2, 5, 8],
   [0, 4, 8],
   [2, 5, 6],
-];*/
+];
 
-/*const checkForWinner = (gameState) => {
+const checkForWinner = (gameState) => {
   // get array of box id's
   // can't be a winner in less than 5 turns
   if (gameState.length < 5) return "No Winner Yet";
@@ -48,7 +48,7 @@ function isSuperset(set, subset) {
   return true;
 }*/
 
-function checkForWinner(gameState) {
+function checkForWinner(state) {
   const win = [
     [0, 1, 2],
     [3, 4, 5],
@@ -62,9 +62,11 @@ function checkForWinner(gameState) {
 
   win.forEach((item) => {
     const [a, b, c] = item;
-    if (gameState[a] == gameState[b] && gameState[a] == gameState[c] && gameState[a]) {
-      return gameState[a];
+    if (state[a] == state[b] && state[a] == state[c] && state[a]) {
+      return state[a];
     } else return null;
   })
 
 }
+
+export {checkForWinner}
