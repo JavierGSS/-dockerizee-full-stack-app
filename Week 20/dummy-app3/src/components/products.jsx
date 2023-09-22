@@ -20,6 +20,7 @@ const products = [
   { name: "Watermelon", country: "Ghana", cost: 6, instock: 6 },
   { name: "Tomatoes", country: "Mexico", cost: 2, instock: 12 },
   { name: "Coffee", country: "Brazil", cost: 10, instock: 5 },
+  { name: "Goava", country: "Thailand", cost: 3, instock: 4 },
 ];
 //=========Cart=============
 
@@ -194,7 +195,7 @@ const Products = (props) => {
     return newTotal;
   };
 
-  const restockProducts = async (url) => {
+  function restockProducts() {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -211,20 +212,21 @@ const Products = (props) => {
       redirect: "follow",
     };
 
-    fetch("localhost:1337/graphql", requestOptions)
-      .then((response) => response.text())
-      .then((result) => console.log(result))
+    fetch("http://localhost:1337/graphql", requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        let json = result.data.products.data;
+        const newSet = json.map((item) => {
+          return {
+            name: item.attributes.name,
+            cost: item.attributes.cost,
+            instock: item.attributes.instock,
+          };
+        });
+        setItems([...newSet]);
+      })
       .catch((error) => console.log("error", error));
-
-    const newSet = result.data.data.map((item) => {
-      return {
-        name: item.attributes.name,
-        cost: item.attributes.cost,
-        instock: item.attributes.instock,
-      };
-    });
-    setItems([...newSet]);
-  };
+  }
 
   return (
     <Container>
@@ -246,14 +248,14 @@ const Products = (props) => {
       <Row>
         <form
           onSubmit={(event) => {
-            restockProducts(`${query}`);
-            console.log(`Restock called on ${query}`);
+            restockProducts();
+            console.log("Restock called on http://localhost:1337/graphql");
             event.preventDefault();
           }}
         >
           <input
             type="text"
-            value={query}
+            value="http://localhost:1337/graphql"
             onChange={(event) => setQuery(event.target.value)}
           />
           <button type="submit">ReStock Products</button>
