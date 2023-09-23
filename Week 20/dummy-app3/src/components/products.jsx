@@ -223,6 +223,7 @@ const Products = (props) => {
             instock: item.attributes.instock,
           };
         });
+        console.log(newSet);
         setItems([...newSet]);
       })
       .catch((error) => console.log("error", error));
