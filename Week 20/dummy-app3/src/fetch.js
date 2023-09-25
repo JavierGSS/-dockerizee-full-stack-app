@@ -5,10 +5,11 @@ export const fetching = {
       .then((result) => {
         let json = result.data.products.data;
         const newSet = json.map((item) => {
+          let { name, cost, instock } = item.attributes;
           return {
-            name: item.attributes.name,
-            cost: item.attributes.cost,
-            instock: item.attributes.instock,
+            name: name,
+            cost: cost,
+            instock: instock,
           };
         });
         return Promise.resolve(newSet);
