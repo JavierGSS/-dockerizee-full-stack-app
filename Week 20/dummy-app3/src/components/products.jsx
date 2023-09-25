@@ -125,7 +125,6 @@ const Products = (props) => {
     console.log(cart);
   };
 
-  console.log("ITEMS: ", items);
   let list = items.map((item, index) => {
     let n = index + 500;
     let picsum = "https://picsum.photos/" + n;
@@ -231,9 +230,9 @@ const Products = (props) => {
       .catch((error) => console.log("error: ", error));*/
 
     // uses the fetch.js module to make fetch requests to localhost:1337/graphql:
-    fetching.handleAPI(requestOptions).then((persistedItem) => {
-      console.log("Persisted:", persistedItem);
-      setItems([...persistedItem]);
+    fetching.handleAPI(requestOptions).then((returnedItem) => {
+      console.log("Persisted:", returnedItem);
+      setItems([...returnedItem]);
       console.log("Persisted 1:", items);
     });
   }
