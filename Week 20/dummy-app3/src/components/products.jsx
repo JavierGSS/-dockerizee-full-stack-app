@@ -10,6 +10,7 @@ import {
   Image,
 } from "react-bootstrap";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
+import { fetching } from "../fetch";
 
 const products = [
   { name: "Apples", country: "Italy", cost: 3, instock: 10 },
@@ -124,6 +125,7 @@ const Products = (props) => {
     console.log(cart);
   };
 
+  console.log("ITEMS: ", items);
   let list = items.map((item, index) => {
     let n = index + 500;
     let picsum = "https://picsum.photos/" + n;
@@ -212,7 +214,7 @@ const Products = (props) => {
       redirect: "follow",
     };
 
-    fetch("http://localhost:1337/graphql", requestOptions)
+    /*fetch("http://localhost:1337/graphql", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         let json = result.data.products.data;
@@ -226,7 +228,14 @@ const Products = (props) => {
         console.log(newSet);
         setItems([...newSet]);
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => console.log("error: ", error));*/
+
+    // uses the fetch.js module to make fetch requests to localhost:1337/graphql:
+    fetching.handleAPI(requestOptions).then((persistedItem) => {
+      console.log("Persisted:", persistedItem);
+      setItems([...persistedItem]);
+      console.log("Persisted 1:", items);
+    });
   }
 
   return (
