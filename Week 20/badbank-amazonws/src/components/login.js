@@ -129,6 +129,7 @@ function Login() {
             <button
               type="submit"
               className="btn btn-light"
+              id="loginButton"
               disabled={buttonDisabled}
               onClick={handleLogin}
             >
