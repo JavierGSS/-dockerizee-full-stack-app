@@ -1,0 +1,7 @@
+version: "3"
+
+services:
+  sample:
+    build: .
+    image: hello:tag
+
