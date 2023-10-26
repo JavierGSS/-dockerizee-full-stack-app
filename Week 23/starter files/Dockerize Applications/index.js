@@ -1,10 +1,9 @@
 var express = require('express');
 var app     = express();
-var colors = require("colors");
 
 app.get('/', function(req,res){
     console.log(new Date().toLocaleString());
-	console.log("App up & running".blue)
+	console.log("App up & running");
 	res.send(new Date().toLocaleString());
 });
 

@@ -11,11 +11,13 @@ app.use(express.json());
 app.get("/", function (req, res) {
   res.send("<h1> Routes: try POST to /contact and GET /contacts </h1>");
 });
+
 // list all contacts
 app.get("/contacts", function (req, res) {
   let con = db.get("contacts");
-  res.json(con);
+  res.json(con);xs
 });
+
 // add a contact
 app.post("/contact", (req, res) => {
   db.get("contacts")

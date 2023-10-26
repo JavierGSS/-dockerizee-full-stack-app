@@ -3,7 +3,7 @@ var app         = express();
 var MongoClient = require('mongodb').MongoClient;
 
 // the name "mongo" comes from the docker link, in the docker-compose.yml
-var url = "mongodb://127.0.0.1/dockerdemo";
+var url = "mongodb://mongo/dockerdemo";
 var db;
 
 MongoClient.connect(url, function (err, database) {
@@ -22,7 +22,8 @@ app.get('/createMongo', function(req, res){
     var name = 'user' + Math.floor(Math.random()*10000);
     var email = name + '@mit.edu';
     console.log(name);
-
+    console.log(email);
+    
     var collection = db.collection('customers');
 
     var doc = {'name':name, 'email':email};

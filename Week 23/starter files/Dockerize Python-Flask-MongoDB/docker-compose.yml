@@ -1,13 +1,14 @@
-datastore:
-  image: mongo:3.0.2
-  ports:
-    - "27017:27017"
-pythonfrontend:
-  build: .
-  command: python -u app.py
-  volumes:
-    - ./src:/todo
-  ports:
-    - "5000:5000"
-  links:
-    - datastore
+services: 
+  datastore:
+    image: mongo:3.0.2
+    ports:
+      - "27017:27017"
+  pythonfrontend:
+    build: .
+    command: python -u app.py
+    volumes:
+      - ./src:/todo
+    ports:
+      - "3000:3000"
+    links:
+      - datastore
