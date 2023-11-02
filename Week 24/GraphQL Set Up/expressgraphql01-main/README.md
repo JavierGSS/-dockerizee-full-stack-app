@@ -1,88 +1,98 @@
-# expressgraphql01
+<div align="center" id="top"> 
+  <img src="./.github/app.gif" alt="Expressgraphql01" />
 
-Exercise 1 uses either data in index.js
-Exercise 2 uses either student data or restaurant data in
-restaurants.json
+  &#xa0;
 
-# GraphQL
+  <!-- <a href="https://expressgraphql01.netlify.app">Demo</a> -->
+</div>
 
-## here are the query and mutation structures
+<h1 align="center">Expressgraphql01</h1>
 
-query getContacts{
-contacts{
-name
-email
-}
-query getContact($iid: Int = 1){
-    contact(id:$id){
-name
-email
-}
-}
+<p align="center">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/JavierGSS/expressgraphql01?color=56BEB8">
 
-mutation setContacts{
-setContact(input: {
-name: "john williams",
-email: "jrw@mit.edu",
-age:50
-}){
-name
-email
-age
-}
-}
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/JavierGSS/expressgraphql01?color=56BEB8">
 
-query getContacts{
-contacts{
-name
-email
-}
-}
-mutation deleteContacts($idd: Int = 1){
-  deleteContact(id: $idd){
-ok
-}
-}
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/JavierGSS/expressgraphql01?color=56BEB8">
 
-mutation editContacts($idd: Int = 1, $age: Int = 35){
-editContact(id: $idd, age: $age){
-name
-age
-}
-}
+  <img alt="License" src="https://img.shields.io/github/license/JavierGSS/expressgraphql01?color=56BEB8">
 
-mutation editrestaurants($idd: Int = 1, $name: String = "OLDO"){
-editrestaurant(id: $idd, name: $name){
-name
-description
-}
-}
-mutation setrestaurants {
-setrestaurant(input: {
-name: "Granite",
-description: "American"}) {
-name
-description
-}
-}
-mutation deleterestaurants($idd: Int = 1){
-  deleterestaurant(id: $idd){
-ok
-}
-}
-query getrestaurants {
-restaurants {
-name
-description
-dishes{
-name
-price
-}
-}
-}
-query getrestaurant($iid: Int = 1){
-    restaurant(id:$iid){
-name
-description
-}
-}
+  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/JavierGSS/expressgraphql01?color=56BEB8" /> -->
+
+  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/JavierGSS/expressgraphql01?color=56BEB8" /> -->
+
+  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/JavierGSS/expressgraphql01?color=56BEB8" /> -->
+</p>
+
+<!-- Status -->
+
+<!-- <h4 align="center"> 
+	🚧  Expressgraphql01 🚀 Under construction...  🚧
+</h4> 
+
+<hr> -->
+
+<p align="center">
+  <a href="#dart-about">About</a> &#xa0; | &#xa0; 
+  <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
+  <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
+  <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
+  <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
+  <a href="#memo-license">License</a> &#xa0; | &#xa0;
+  <a href="https://github.com/JavierGSS" target="_blank">Author</a>
+</p>
+
+<br>
+
+## :dart: About ##
+
+Describe your project
+
+## :sparkles: Features ##
+
+:heavy_check_mark: Feature 1;\
+:heavy_check_mark: Feature 2;\
+:heavy_check_mark: Feature 3;
+
+## :rocket: Technologies ##
+
+The following tools were used in this project:
+
+- [Expo](https://expo.io/)
+- [Node.js](https://nodejs.org/en/)
+- [React](https://pt-br.reactjs.org/)
+- [React Native](https://reactnative.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+
+## :white_check_mark: Requirements ##
+
+Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
+
+## :checkered_flag: Starting ##
+
+```bash
+# Clone this project
+$ git clone https://github.com/JavierGSS/expressgraphql01
+
+# Access
+$ cd expressgraphql01
+
+# Install dependencies
+$ yarn
+
+# Run the project
+$ yarn start
+
+# The server will initialize in the <http://localhost:3000>
+```
+
+## :memo: License ##
+
+This project is under license from MIT. For more details, see the [LICENSE](LICENSE) file.
+
+
+Made with :heart: by <a href="https://github.com/JavierGSS" target="_blank">Baba</a>
+
+&#xa0;
+
+<a href="#top">Back to top</a>

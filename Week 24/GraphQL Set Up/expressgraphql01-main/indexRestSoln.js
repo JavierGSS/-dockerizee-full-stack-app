@@ -55,6 +55,7 @@ var restaurants =  [
       ]
     }
   ];
+
 var schema = buildSchema(`
 type Query{
   restaurant(id: Int): restaurant
@@ -70,18 +71,22 @@ type Dish{
   name: String
   price: Int
 }
+input Dishes{
+  name: String
+  price: Int
+}
 input restaurantInput{
   name: String
   description: String
+  dishes: [Dishes]
 }
 type DeleteResponse{
   ok: Boolean!
 }
 type Mutation{
   setrestaurant(input: restaurantInput): restaurant
-
   deleterestaurant(id: Int!): DeleteResponse
-  editrestaurant(id: Int!, name: String!): restaurant
+  editrestaurant(id: Int!, name: String!, description: String!): restaurant
 }
 `);
 // The root provides a resolver function for each API endpoint
@@ -89,15 +94,15 @@ type Mutation{
 
 var root = {
   restaurant : (arg)=>restaurants[arg.id],
-  restaurants : ()=> restaurants,
+  restaurants : () => restaurants,
   setrestaurant : ({input}) => {
-    restaurants.push({name:input.name,email:input.email,age:input.age})
+    restaurants.push({name:input.name, description:input.description, dishes: input.dishes})
     return input
   },
   deleterestaurant : ({id})=>{
     const ok = Boolean(restaurants[id])
     let delc = restaurants[id];
-    restaurants = restaurants.filter(item => item.id !== id)
+    restaurants = restaurants.filter(item => item !== delc)
     console.log(JSON.stringify(delc)) 
     return {ok}
   },
@@ -118,4 +123,4 @@ app.use('/graphql', graphqlHTTP({
   graphiql: true,
 }));
 var port = 5500
-app.listen(5500,()=> console.log('Running Graphql on Port:'+port));
+app.listen(5500,()=> console.log('Running Graphql on Port:'+ port));
