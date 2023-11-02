@@ -17,6 +17,7 @@
     "epilogue": "^0.7.1",
     "express": "^4.16.3",
     "lowdb": "^1.0.0",
+    "request": "^2.88.2",
     "request-promise": "^4.2.2",
     "sequelize": "^4.38.0",
     "sqlite3": "^4.2.0",

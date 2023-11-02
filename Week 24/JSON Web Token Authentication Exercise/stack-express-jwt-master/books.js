@@ -1,4 +1,3 @@
-
 const express = require('express');
 const bodyParser = require('body-parser');
 
@@ -27,7 +26,7 @@ const authenticateJWT = (req, res, next) => {
     } else {
         res.sendStatus(401);
     }
-}
+}; 
 
 const books = [
     {
@@ -72,6 +71,14 @@ app.post('/books', authenticateJWT, (req, res) => {
     books.push(book);
 
     res.send('book added successfully');
+});
+
+app.post("/books/remove", authenticateJWT, (req, res) => {
+    const {role} = req.body;
+    const singledOut = books.find(item => {
+        return item.title === title;
+    })
+
 });
 
 app.listen(4000, () => {

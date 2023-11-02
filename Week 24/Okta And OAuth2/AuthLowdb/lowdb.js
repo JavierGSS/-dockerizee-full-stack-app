@@ -92,5 +92,5 @@ console.log ('posts '+ JSON.stringify(result.posts));
     return db.defaults({ posts: [] }).write()
   })
   .then(() => {
-    app.listen(3000, () => console.log('listening on port 3000'))
+    app.listen(3000, () => console.log('server lowdb.js listening on port 3000'))
   })
