@@ -59,8 +59,8 @@ var schema = buildSchema(`
     name: String
   }
   input Classes {
-    number: String
-    name: String
+    number: String!
+    name: String!
   }
   input ContactInput {
     id: Int
@@ -72,10 +72,10 @@ var schema = buildSchema(`
   type DeleteResponse {
     ok: Boolean!
   }
-  type Mutation {
+  type Mutation { 
     setContact(input: ContactInput): Contact
     deleteContact(id: Int!): DeleteResponse
-    editContact(id: Int!, age: Int!, email: String!, input: Classes): Contact
+    editContact(id: Int!, name: String, age: Int, email: String, courses: [Classes]): Contact
   }
 `);
 
