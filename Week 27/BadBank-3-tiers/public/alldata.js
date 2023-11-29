@@ -1,16 +1,18 @@
 function AllData() {
-  const ctx = React.useContext(UserContext);
+  const [data, setData] = React.useState("");
+  React.useEffect(() => {
+    // fetch all accounts from API
+    fetch("/account/all")
+      .then((response) => response.json())
+      .then((info) => {
+        console.log(info);
+        setData(JSON.stringify(info));
+      });
+  }, []);
   return (
-    <div className="card text-center">
-      <div className="card-header">
-        <strong>All Data in Store</strong>
-      </div>
-      <br />
-      <button className="btn btn-primary" type="submit">
-        Show All Data
-      </button>
-      <br />
-      <div id="allDataStatus">{JSON.stringify(ctx)}</div>
-    </div>
+    <>
+      <h5>All data in store:</h5>
+      {data}
+    </>
   );
 }
