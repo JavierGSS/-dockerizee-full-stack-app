@@ -1,11 +1,11 @@
 import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
-import Layout2 from "../../components/layout2";
+import Layout from "../../components/layout";
 
 export default function FirstPost() {
   return (
-    <Layout2>
+    <Layout Head>
       <Head>
         <title>My First Next.js App</title>
       </Head>
@@ -23,6 +23,6 @@ export default function FirstPost() {
         alt="calaca"
         priority={true}
       />
-    </Layout2>
+    </Layout>
   );
 }
