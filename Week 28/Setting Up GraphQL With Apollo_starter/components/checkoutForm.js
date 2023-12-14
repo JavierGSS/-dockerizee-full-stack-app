@@ -1,4 +1,3 @@
-
 import React, { useState, useContext } from "react";
 import { FormGroup, Label, Input } from "reactstrap";
 import fetch from "isomorphic-fetch";
@@ -22,6 +21,7 @@ function CheckoutForm() {
   function onChange(e) {
     // set the key = to the name property equal to the value typed
     const updateItem = (data[e.target.name] = e.target.value);
+    console.log(typeof data[e.target.name]);
     // update the state data object
     setData({ ...data, updateItem });
   }
@@ -39,11 +39,13 @@ function CheckoutForm() {
 
     const token = await stripe.createToken(cardElement);
     const userToken = Cookies.get("token");
+    console.log("COOKIES: ", userToken);
+    console.log("Bizarre: ", Number(Math.round(appContext.cart.total)));
     const response = await fetch(`${API_URL}/orders`, {
       method: "POST",
       headers: userToken && { Authorization: `Bearer ${userToken}` },
       body: JSON.stringify({
-        amount: Number(Math.round(appContext.cart.total + "e2") + "e-2"),
+        amount: Number(Math.round(appContext.cart.total)),
         dishes: appContext.cart.items,
         address: data.address,
         city: data.city,
@@ -54,7 +56,7 @@ function CheckoutForm() {
 
     if (!response.ok) {
       setError(response.statusText);
-      console.log("SUCCESS")
+      console.log("Error");
     }
 
     // OTHER stripe methods you can use depending on app

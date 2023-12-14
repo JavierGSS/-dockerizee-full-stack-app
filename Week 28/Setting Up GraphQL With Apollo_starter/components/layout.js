@@ -7,8 +7,10 @@ import { Container, Nav, NavItem } from "reactstrap";
 import AppContext from "./context";
 
 const Layout = (props) => {
-  const title = "Welcome to Nextjs";
-  const { user } = useContext(AppContext);
+  const title = "Nextjs Restaurant App";
+  const { user, setUser } = useContext(AppContext);
+  console.log("CHA", user);
+
   return (
     <div>
       <Head>
@@ -38,7 +40,9 @@ const Layout = (props) => {
         <Nav className="navbar navbar-dark bg-dark">
           <NavItem>
             <Link href="/">
-              <a className="navbar-brand">Home</a>
+              <a className="navbar-brand" href="/">
+                Home
+              </a>
             </Link>
           </NavItem>
           <NavItem className="ml-auto">
@@ -56,8 +60,9 @@ const Layout = (props) => {
                 <a
                   className="nav-link"
                   onClick={() => {
-                    logout();
+                    login();
                     setUser(null);
+                    console.log(user);
                   }}
                 >
                   Logout

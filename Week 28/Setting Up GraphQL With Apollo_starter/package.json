@@ -18,7 +18,10 @@
     "next": "9.5.5",
     "react": "16.14.0",
     "react-dom": "16.14.0",
-    "reactstrap": "^8.6.0"
+    "reactstrap": "^8.6.0",
+    "semantic-ui-css": "^2.5.0",
+    "semantic-ui-react": "^2.1.5",
+    "stripe": "^14.8.0"
   },
   "description": "Exercise05 is full Shopping Cart with Stripe Billing",
   "main": "index.js",

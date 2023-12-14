@@ -9,7 +9,7 @@ const AppContext = React.createContext({
   cart: { items: [], total: 0 },
   addItem: () => {},
   removeItem: () => {},
-  user: false,
   setUser: () => {},
+  user: false,
 });
 export default AppContext;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Cart from "../components/cart";
 import {
   ApolloProvider,
@@ -8,6 +8,8 @@ import {
 } from "@apollo/client";
 import RestaurantList from "../components/restaurantList";
 import { InputGroup, InputGroupAddon, Input } from "reactstrap";
+import AppContext from "../components/context";
+import "semantic-ui-css/semantic.min.css";
 
 function Home() {
   const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
@@ -16,6 +18,8 @@ function Home() {
   const link = new HttpLink({ uri: `${API_URL}/graphql` });
   const cache = new InMemoryCache();
   const client = new ApolloClient({ link, cache });
+  let appContext = useContext(AppContext);
+  console.log("CHEVERE: ", appContext.user);
 
   return (
     <ApolloProvider client={client}>

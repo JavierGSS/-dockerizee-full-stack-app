@@ -2,18 +2,10 @@
 
 import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
-import {
-  Container,
-  Row,
-  Col,
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-} from "reactstrap";
+import { Container, Row, Col, Form, FormGroup, Label, Input } from "reactstrap";
 import { login } from "../components/auth";
 import AppContext from "../components/context";
+import { Button, Icon } from "semantic-ui-react";
 
 function Login(props) {
   const [data, updateData] = useState({ identifier: "", password: "" });
@@ -38,7 +30,7 @@ function Login(props) {
         <Col sm="12" md={{ size: 5, offset: 3 }}>
           <div className="paper">
             <div className="header">
-              <img src="http://localhost:1337/uploads/5a60a9d26a764e7cba1099d8b157b5e9.png" />
+              <img src="../red.jpeg" width={55} height={55} />
             </div>
             <section className="wrapper">
               {Object.entries(error).length !== 0 &&
@@ -82,8 +74,9 @@ function Login(props) {
                       </a>
                     </span>
                     <Button
+                      animated
                       style={{ float: "right", width: 120 }}
-                      color="primary"
+                      color="olive"
                       onClick={() => {
                         setLoading(true);
                         login(data.identifier, data.password)
@@ -91,14 +84,20 @@ function Login(props) {
                             setLoading(false);
                             // set authed User in global context to update header/app state
                             appContext.setUser(res.data.user);
+                            console.log("Login2: ", res.data.user);
                           })
                           .catch((error) => {
-                            //setError(error.response.data);
+                            setError(error.response.data);
                             setLoading(false);
                           });
                       }}
                     >
-                      {loading ? "Loading... " : "Submit"}
+                      <Button.Content visible>
+                        {loading ? "Loading... " : "Submit"}
+                      </Button.Content>
+                      <Button.Content hidden>
+                        <Icon name="arrow right" />
+                      </Button.Content>
                     </Button>
                   </FormGroup>
                 </fieldset>

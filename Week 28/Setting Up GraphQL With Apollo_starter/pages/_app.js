@@ -13,8 +13,10 @@ function MyApp(props) {
   setUser = (user) => {
     setState({ user });
   };
+
   addItem = (item) => {
     let { items } = state.cart;
+
     //check for item already in cart
     //if not in cart, add item if item is found increase quanity ++
     let foundItem = true;
@@ -25,7 +27,9 @@ function MyApp(props) {
     } else {
       foundItem = false;
     }
+
     console.log(`Found Item value: ${JSON.stringify(foundItem)}`);
+
     // if item is not new, add to cart, set quantity to 1
     if (!foundItem) {
       //set quantity property to 1
@@ -39,7 +43,7 @@ function MyApp(props) {
       setState({ cart: newCart });
       console.log(`Total items: ${JSON.stringify(newCart)}`);
     } else {
-      // we already have it so just increase quantity ++
+      // we already have item so just increase quantity ++
       console.log(`Total so far:  ${state.cart.total}`);
       newCart = {
         items: items.map((item) => {
@@ -52,6 +56,7 @@ function MyApp(props) {
         total: state.cart.total + item.price,
       };
     }
+
     setState({ cart: newCart }); // problem is this is not updated yet
     console.log(`state reset to cart:${JSON.stringify(state)}`);
   };
@@ -64,9 +69,7 @@ function MyApp(props) {
         items: items.map((item) => {
           if (item.id === foundItem.id) {
             return Object.assign({}, item, { quantity: item.quantity - 1 });
-          } else {
-            return item;
-          }
+          } else return item;
         }),
         total: state.cart.total - item.price,
       };

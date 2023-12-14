@@ -44,7 +44,7 @@ function RestaurantList(props) {
 
   if (searchQuery.length > 0) {
     for (let i = 0; i < searchQuery.length; i++) {
-      console.log(searchQuery[i].name);
+      console.log("search query: ", searchQuery[i].name);
     }
   }
 
@@ -68,7 +68,13 @@ function RestaurantList(props) {
             <CardText>{res.description}</CardText>
           </CardBody>
           <div className="card-footer">
-            <Button color="info" onClick={() => setRestaurantID(res.id)}>
+            <Button
+              color="info"
+              onClick={() => {
+                setRestaurantID(res.id);
+                console.log("Restau nº", res.id);
+              }}
+            >
               {res.name}
             </Button>
           </div>
